@@ -8,16 +8,16 @@
 </head>
 <body>
     <form action="?" method="POST">
-    <input type="text"  name="name" value="<?=$_POST['name']?>" >
+    <input type="text"  name="name" value="<?=!empty($_POST['name'])?$_POST['name']:"" ?>" >
     <input type="text" name="chat">  
     <input type="submit" value="ok">
     </form>
     
 <?php
      if (!empty($_POST["name"])) {
-        file_put_contents("mess.txt",$_POST["name"].":". $_POST["chat"] ."\n", FILE_APPEND );
+        file_put_contents("mess.txt", $_SERVER['REMOTE_ADDR']. ":". $_POST["name"].":". $_POST["chat"] ."\n", FILE_APPEND );
     }
- 
+
 ?>
 </body>
 </html>
