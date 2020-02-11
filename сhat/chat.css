@@ -1,0 +1,13 @@
+.csss:nth-child(odd){
+    background-color: green;
+}
+.csss:nth-child(even){
+    background-color: blue;
+}
+
+/* .even{
+    background-color: green;
+}
+.odd{
+    background-color: blue;
+} */
