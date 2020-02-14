@@ -17,7 +17,7 @@
     include('config.php');
     foreach ($arr as $value) {
         $chat = explode("$separator", $value);
-        echo "<div class='csss'>$chat[2] : $chat[3]</div>";
+        echo "<div class='csss'>$chat[2] : $chat[4] : $chat[5]</div>";
         // echo "<div class = '" . (($key % 2) ? 'odd' : 'even') . "'> $value </div>";
     }
     

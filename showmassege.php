@@ -26,11 +26,12 @@
     $ban = file("ban.txt");
     include('config.php');
 
-
+    $time = time();
+    $showtime = date("d-M-Y", mktime(0,0,0,14,02,2020));
     if (in_array($_SERVER['REMOTE_ADDR'], $ban)) {
         echo  "<div class='ban'>Произошел БАН!<div>";
     } elseif(!empty($_POST['name']) && !empty($_POST["chat"])) {
-        file_put_contents("mess.txt", $_SERVER['HTTP_USER_AGENT'] . "$separator" . $_SERVER['REMOTE_ADDR'] . "$separator" . $_POST["name"] . "$separator" . $_POST["chat"] . "\n", FILE_APPEND);
+        file_put_contents("mess.txt", $_SERVER['HTTP_USER_AGENT'] . "$separator" . $time. "$separator" . $showtime. "$separator". $_SERVER['REMOTE_ADDR'] . "$separator" . $_POST["name"] . "$separator" . $_POST["chat"] . "\n", FILE_APPEND);
     }
 
     ?>
