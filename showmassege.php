@@ -24,11 +24,13 @@
 
     <?php
     $ban = file("ban.txt");
+    include('config.php');
+
 
     if (in_array($_SERVER['REMOTE_ADDR'], $ban)) {
         echo  "<div class='ban'>Произошел БАН!<div>";
-    } else {
-        file_put_contents("mess.txt", $_SERVER['HTTP_USER_AGENT'] . ":" . $_SERVER['REMOTE_ADDR'] . ":" . $_POST["name"] . ":" . $_POST["chat"] . "\n", FILE_APPEND);
+    } elseif(!empty($_POST['name']) && !empty($_POST["chat"])) {
+        file_put_contents("mess.txt", $_SERVER['HTTP_USER_AGENT'] . "$separator" . $_SERVER['REMOTE_ADDR'] . "$separator" . $_POST["name"] . "$separator" . $_POST["chat"] . "\n", FILE_APPEND);
     }
 
     ?>
